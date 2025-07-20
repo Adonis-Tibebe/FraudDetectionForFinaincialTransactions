@@ -1,0 +1,4 @@
+[core]
+    remote = localstore
+['remote "localstore"']
+    url = C:/Users/adoni/Desktop/KAIM COURSE/DATA/DVC-week8&9

@@ -1,13 +1,84 @@
-# Your Project Name
+# Fraud Detection for Financial Transactions
 
-Add your project description here.
+A robust, modular pipeline for detecting fraudulent financial transactions using real-world datasets. This project demonstrates best practices in data cleaning, feature engineering, preprocessing, and class imbalance handling, with reusable components for experimentation and deployment.
+
+## Project Structure
+
+```
+FraudDetectionForFinaincialTransactions/
+│
+├── config/         # Configuration settings
+├── data/           # Raw and processed data (DVC-tracked)
+├── docs/           # Project documentation
+├── examples/       # Example usage scripts (template)
+├── notebooks/      # Jupyter notebooks for EDA and pipeline demos
+├── scripts/        # Utility scripts (template)
+├── src/            # Source code (core logic, models, utils)
+├── tests/          # Unit and integration tests
+├── requirements.txt
+├── pyproject.toml
+└── README.md
+```
+
+## Key Features
+
+- **Data Versioning:** Uses DVC to track raw and processed datasets for reproducibility.
+- **EDA & Visualization:** Notebooks for in-depth exploratory analysis and visualization.
+- **Feature Engineering:** Temporal, behavioral, and categorical feature creation (e.g., transaction frequency, velocity, time-based features).
+- **Preprocessing Pipelines:** Modular transformers for both categorical-rich and fully-numeric datasets, implemented in `src/core/DataTransformer.py`.
+- **Imbalance Handling:** Random Undersampling (RUS) for categorical data, SMOTE for numeric data.
+- **Reusable Components:** Core logic in `src/` for easy integration and deployment.
+- **Utility Functions:** Data loading, cleaning, and visualization helpers in `src/utils/utils.py`.
 
 ## Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. Clone the repository:
+    ```bash
+    git clone <repo-url>
+    cd FraudDetectionForFinaincialTransactions
+    ```
+2. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. (Optional) Set up DVC and pull data:
+    ```bash
+    pip install dvc
+    dvc pull
+    ```
 
 ## Usage
 
-Add usage instructions here.
+- **Jupyter Notebooks:**  
+  Run the notebooks in the `notebooks/` directory for EDA and pipeline demonstrations. These provide a step-by-step walkthrough of the data preparation and feature engineering process.
+
+- **Source Code:**  
+  Import and use the core data transformation logic from `src/core/DataTransformer.py` and utility functions from `src/utils/utils.py` in your own scripts or pipelines. Example usage is shown in the notebooks.
+
+## Data
+
+- Place raw data in `data/raw/` (DVC-tracked).
+- Processed and feature-engineered data will be saved in `data/processed/`.
+- Data files are tracked using DVC. To obtain the actual data files, run:
+  ```bash
+  dvc pull
+  ```
+- See `data/README.md` for more details.
+
+## Notebooks
+
+- See `notebooks/README.md` for an overview of available notebooks and their purposes.
+- Notebooks demonstrate the full workflow: EDA, cleaning, feature engineering, transformation, and class balancing.
+
+## Configuration
+
+- Project configuration can be managed in `config/settings.py`.
+- Adjust settings as needed for your environment or experiments.
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
+
+## License
+
+None
