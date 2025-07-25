@@ -1,12 +1,39 @@
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "your-project-name"
+name = "fraud-detection"
 version = "0.1.0"
-description = ""
+description = "A robust, modular pipeline for detecting fraudulent financial transactions."
+authors = [
+    { name="Adoniyas Tibebe", email="adatibebe12@gmail.com" }
+]
 requires-python = ">=3.8"
+readme = "README.md"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.black]
+line-length = 88
+target-version = ['py38']
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | .dvc
+  | .pytest_cache
+)/
+'''
+
+[tool.flake8]
+max-line-length = 88
+exclude = .git,__pycache__,.venv,build,dist,.dvc,.pytest_cache
+ignore = E203, E266, E501, W503
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
