@@ -11,6 +11,7 @@ This directory contains all datasets used in the fraud detection project. The da
 - `processed/`:
   - Contains cleaned and feature-engineered datasets (e.g., `cleaned_creditcard_data.csv`, `cleaned_fraud_data.csv`).
   - These are outputs of the data cleaning and feature engineering steps, also tracked with DVC.
+- The feature-engineered datasets are used as inputs for the modeling pipeline demonstrated in the notebooks.
 
 ## Data Version Control (DVC)
 

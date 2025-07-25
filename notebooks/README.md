@@ -31,3 +31,4 @@ These notebooks are intended for interactive exploration and demonstration of th
 ## Notes
 - The notebooks import utility and transformation functions from the `src/` directory for modularity and reusability.
 - For production or automated workflows, refer to the code in `src/` rather than copying notebook code.
+- Model selection is based on evaluation metrics most relevant to fraud detection (F1, ROC AUC, recall), with XGBoost chosen as the final model for deployment.
