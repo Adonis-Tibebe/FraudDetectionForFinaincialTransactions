@@ -12,7 +12,7 @@ FraudDetectionForFinaincialTransactions/
 ├── docs/           # Project documentation
 ├── examples/       # Example usage scripts (template)
 ├── notebooks/      # Jupyter notebooks for EDA and pipeline demos
-├── scripts/        # Utility scripts (template)
+├── scripts/        # Training scripts for model automation
 ├── src/            # Source code (core logic, models, utils)
 ├── tests/          # Unit and integration tests
 ├── requirements.txt
@@ -52,8 +52,23 @@ FraudDetectionForFinaincialTransactions/
 - **Jupyter Notebooks:**  
   Run the notebooks in the `notebooks/` directory for EDA and pipeline demonstrations. These provide a step-by-step walkthrough of the data preparation and feature engineering process.
 
+- **Training Scripts:**  
+  The `scripts/` directory contains automated scripts for model training and evaluation:
+  - `Train_Fraud_model.py`: Trains and evaluates models on the feature-engineered fraud dataset, including preprocessing, class balancing (Random Undersampling), hyperparameter tuning, evaluation, and artifact saving.
+  - `Train_CreditCard_model.py`: Trains and evaluates models on the cleaned credit card dataset, including preprocessing, class balancing (SMOTE), hyperparameter tuning, evaluation, and artifact saving.
+  - Both scripts support Logistic Regression and XGBoost, and save trained models and evaluation plots for deployment or further analysis.
+
+  To run the scripts:
+  ```bash
+  python scripts/Train_Fraud_model.py
+  python scripts/Train_CreditCard_model.py
+  ```
+
 - **Source Code:**  
   Import and use the core data transformation logic from `src/core/DataTransformer.py` and utility functions from `src/utils/utils.py` in your own scripts or pipelines. Example usage is shown in the notebooks.
+
+- **Model Training and Selection:**  
+  The pipeline supports both Logistic Regression and XGBoost models, with hyperparameter tuning and evaluation. The final model is selected based on F1, ROC AUC, and recall, with XGBoost chosen for deployment due to its superior performance on these metrics.
 
 ## Data
 
@@ -68,7 +83,7 @@ FraudDetectionForFinaincialTransactions/
 ## Notebooks
 
 - See `notebooks/README.md` for an overview of available notebooks and their purposes.
-- Notebooks demonstrate the full workflow: EDA, cleaning, feature engineering, transformation, and class balancing.
+- - Notebooks demonstrate the full workflow: EDA, cleaning, feature engineering, transformation, class balancing, and model selection.
 
 ## Configuration
 
