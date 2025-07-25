@@ -58,7 +58,6 @@ class FraudPreprocessor(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        
         logger.info("Transforming data with trained encoders/scalers")
         df = X.copy()
 
@@ -67,15 +66,23 @@ class FraudPreprocessor(BaseEstimator, TransformerMixin):
             df['country_encoded'] = df['country'].map(self.country_fraud_map).fillna(self.global_fraud_rate)
 
         X_transformed = self.column_transformer.transform(df)
+        feature_names = self.column_transformer.get_feature_names_out()
         logger.info(f"Transformation complete → shape: {X_transformed.shape}")
-        return pd.DataFrame(X_transformed)
+
+        return pd.DataFrame(X_transformed, columns=feature_names)
 
     def sample(self, X, y):
         logger.info(f"Applying sampling method: {self.sampler}")
         if self.sampler == 'auto':
-            sampler = SMOTE(random_state=42) if self.mode == 'creditcard_data' else RandomUnderSampler(random_state=42)
+            if self.mode == 'creditcard_data':
+                sampler = SMOTE(random_state=42) 
+            else:
+                sampler = RandomUnderSampler(
+                sampling_strategy=0.25,  # keep minority, reduce majority so it’s 4x larger
+                random_state=42
+                )
         else:
-            sampler = self.sampler
+            sampler = self.sampler # If custom sampler passed
 
         X_resampled, y_resampled = sampler.fit_resample(X, y)
         logger.info(f"Resampled data → new shape: {X_resampled.shape}")
