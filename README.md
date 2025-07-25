@@ -27,6 +27,7 @@ FraudDetectionForFinaincialTransactions/
 - **Feature Engineering:** Temporal, behavioral, and categorical feature creation (e.g., transaction frequency, velocity, time-based features).
 - **Preprocessing Pipelines:** Modular transformers for both categorical-rich and fully-numeric datasets, implemented in `src/core/DataTransformer.py`.
 - **Imbalance Handling:** Random Undersampling (RUS) for categorical data, SMOTE for numeric data.
+- **Model Explainability:** SHAP-based global and local interpretation notebooks for both fraud and credit card models, supporting transparency and compliance.
 - **Reusable Components:** Core logic in `src/` for easy integration and deployment.
 - **Utility Functions:** Data loading, cleaning, and visualization helpers in `src/utils/utils.py`.
 
@@ -83,7 +84,8 @@ FraudDetectionForFinaincialTransactions/
 ## Notebooks
 
 - See `notebooks/README.md` for an overview of available notebooks and their purposes.
-- - Notebooks demonstrate the full workflow: EDA, cleaning, feature engineering, transformation, class balancing, and model selection.
+- Notebooks demonstrate the full workflow: EDA, cleaning, feature engineering, transformation, class balancing, model training, and **model interpretation**.
+- **Model interpretation notebooks** (`fraud-model-interpretatoin.ipynb` and `creditcard-model-interpretatoin .ipynb`) provide both global and local insights into model predictions using SHAP, helping users and stakeholders understand which features drive fraud detection and how individual predictions are made.
 
 ## Configuration
 
